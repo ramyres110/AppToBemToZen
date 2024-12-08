@@ -1,0 +1,47 @@
+{% extends 'area_professor/base.html' %}
+{% load static%}
+{% block 'content' %}
+<h1 class="mb-5"> Cadastrar Turma </h1>
+
+<form method="post" action="{% url 'area_professor_cad_turmas' %}">
+    {% csrf_token %}
+
+    {% if error %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput0" class="form-label">Escola</label>
+        <input name="escola" type="text" class="form-control" id="exampleFormControlInput0" autofocus required>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Série</label>
+        <input name="serie" type="text" class="form-control" id="exampleFormControlInput1" autofocus required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Turno</label>
+        <select name="turno" class="form-select" required>
+            <option selected></option>
+            <option value="M">Matutino</option>
+            <option value="V">Vespertino</option>
+            <option value="N">Noturno</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput2" class="form-label">Ano</label>
+        <input name="ano" type="number" class="form-control" id="exampleFormControlInput2">
+    </div>
+
+    <div class="d-grid mb-3">
+        <button class="btn btn-primary" type="submit">Cadastrar</button>
+    </div>
+</form>
+
+<script src="{% static '/area_professor/js/simulado.js' %}"></script>
+
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "homepage/base.html" %}
+
+{% block 'content' %}
+
+        <main class="px-3">
+            <h1>To Bem To Zen</h1>
+            <p class="lead">
+                A plataforma completa para o seu sucesso no Enem! Professores, criem simulados personalizados e
+                acompanhem o desempenho dos seus alunos. Alunos, resolvam questões, acompanhem seu progresso e se
+                preparem para o vestibular dos seus sonhos.
+            </p>
+            {% if not user.is_authenticated %}
+            <p class="lead">
+                <a href="{% url 'area_professor_index' %}" class="btn btn-lg btn-primary fw-bold">Sou Professor</a>
+                <a href="{% url 'area_aluno_index' %}" class="btn btn-lg btn-warning fw-bold">Sou Aluno</a>
+            </p>
+            {% else %}
+            <p class="lead">
+                <a href="{% url 'area_professor_index' %}" class="btn btn-lg btn-primary fw-bold">Acessar</a>
+            </p>
+            {% endif %}
+        </main>
+{% endblock %}

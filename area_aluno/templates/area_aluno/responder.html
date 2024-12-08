@@ -1,0 +1,53 @@
+{% extends 'area_professor/base.html' %}
+{% load static%}
+{% block 'content' %}
+
+<h1> Simulado </h1>
+<h3 class="mb-5">{{simulado}}</h3>
+
+<form method="post">
+    {% csrf_token %}
+
+    {% if error %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+    {% if not questoes %}
+    <div class="alert alert-warning" role="alert">
+        Nenhuma questão foi encontrada para este simulado!
+    </div>
+    {% else %}
+
+    <ol>
+        {% for questao in questoes %}
+        <li>
+            <p class="fw-bold">
+                Questão: {{questao.descricao}}
+            </p>
+            <ol class="list-group list-group-flush mb-3">
+                {% for opcao in questao.opcoes %}
+                <li class="list-group-item">
+                    <div class="form-check">
+                        <input name="opcao_{{questao.id}}" value="{{opcao.id}}" class="form-check-input" type="radio" id="opcao_{{questao.id}}_{{opcao.id}}" required>
+                        <label class="form-check-label" for="opcao_{{questao.id}}_{{opcao.id}}">
+                            {{opcao.descricao}}
+                        </label>
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+        </li>
+        {% endfor %}
+    </ol>
+
+    <div class="d-grid mb-3">
+        <button class="btn btn-primary" type="submit">Finalizar</button>
+    </div>
+
+    {% endif %}
+</form>
+
+{% endblock %}

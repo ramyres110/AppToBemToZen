@@ -1,0 +1,50 @@
+{% extends 'area_professor/base.html' %}
+{% load static%}
+{% block 'content' %}
+
+<div class="row">
+    <div class="col-12 col-md-6 col-lg-3 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Simulados</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Quantidade de simulados</h6>
+                <p class="card-text display-1 text-center">{{qtd_simulados|default:"0"}}</p>
+                <a href="{% url 'area_aluno_simulados'%}" class="card-link">Visualizar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Turmas</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Quantidade de turmas</h6>
+                <p class="card-text display-1 text-center">{{qtd_turmas|default:"0"}}</p>
+                <a href="{% url 'area_aluno_turma'%}" class="card-link">Visualizar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Respostas</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Quantidade de respostas</h6>
+                <p class="card-text display-1 text-center">{{qtd_respostas|default:"0"}}</p>
+                
+                <a href="{% url 'area_aluno_respostas'%}" class="card-link">Visualizar</a>                
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Fórum</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Perguntas respondidas</h6>
+                <p class="card-text display-1 text-center">{{qtd_respostas_forum|default:"0"}}</p>
+                
+                <a href="{% url 'forum' %}" class="card-link">Ir para o fórum</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
